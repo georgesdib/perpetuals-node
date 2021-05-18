@@ -1,0 +1,46 @@
+[package]
+name = "perpetuals"
+description = 'FRAME pallet for pricing perpetual assets.'
+version = "3.0.0"
+authors = ["Georges Dib <georges.dib@gmail.com>"]
+edition = "2018"
+readme = 'README.md'
+homepage = 'https://substrate.dev' # Amend that to have my home page
+license = 'Unlicense' # Amend that with the right license
+repository = 'https://github.com/georgesdib/perpetuals/'
+
+[dependencies]
+serde = { version = "1.0.119", optional = true }
+codec = { default-features = false, features = ['derive'], package = 'parity-scale-codec', version = '2.0.0' }
+sp-runtime = { default-features = false, version = '3.0.0' }
+sp-std = { default-features = false, version = '3.0.0' }
+sp-arithmetic = { default-features = false, version = '3.0.0' }
+frame-benchmarking = { default-features = false, optional = true, version = '3.1.0' }
+frame-support = { default-features = false, version = '3.0.0' }
+frame-system = { default-features = false, version = '3.0.0' }
+pallet-treasury = { default-features = false, version = '3.0.0' }
+
+[dev-dependencies]
+sp-core = { default-features = false, version = '3.0.0' }
+sp-io = { default-features = false, version = '3.0.0' }
+pallet-balances = { default-features = false, version = '3.0.0' }
+
+[features]
+default = ["std"]
+std = [
+	"serde",
+	"codec/std",
+	"sp-std/std",
+	"sp-runtime/std",
+	"sp-arithmetic/std",
+	"frame-support/std",
+	"frame-system/std",
+	"pallet-treasury/std",
+	"frame-benchmarking/std",
+]
+
+runtime-benchmarks = [
+	"frame-benchmarking",
+	"frame-support/runtime-benchmarks",
+	"frame-system/runtime-benchmarks",
+]
